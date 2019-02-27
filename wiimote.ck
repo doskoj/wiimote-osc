@@ -3,12 +3,15 @@ OscMsg msg;
 
 8008 => oin.port;
 
-oin.event("/wiimote") @=> wiimote_event;
+oin.listenAll();
 
 while (true) {
-  wiimote_event => now;
+  oin => now;
 
-  while (wiimote_event.nextMsg() != 0) {
-    <<< wiimote_event.address, wiimote_event.getString(0) >>>;
+  while (oin.recv(msg)) {
+    <<< msg.address, msg.getString(0) >>>;
+    // msg.getSting(0);
+    //if (msg.address == "/wiimote/buttons") {
+    //}
   }
 }
