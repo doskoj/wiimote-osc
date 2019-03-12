@@ -38,7 +38,7 @@ wm = None
 client = OSC.OSCClient()
 
 ip = getIP()
-if !ip:
+if not ip:
     print("Fatal Error")
     exit(-1)
 
@@ -53,7 +53,7 @@ while client.client_address == None:
 msg = OSC.OSCMessage()
 
 while True:
-    if !wm:
+    if not wm:
         setup_wiimote(ip)
     msg.clear()
     msg.setAddress("/wiimote/buttons")
